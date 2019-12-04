@@ -48,8 +48,15 @@ const FilterContainer = styled.div`
 `;
 
 const Filter = styled.div`
-  margin: 0 15px;
+  margin-left: 15px;
   display: flex;
+
+  @media (max-width: 1300px) {
+    display: grid;
+    grid-template-columns: minmax(80px, 120px) minmax(100px, 300px);
+    grid-gap: 10px;
+    margin: 5px;
+  }
 `;
 
 const FilterLabel = styled.label`
@@ -156,6 +163,8 @@ export const SearchBar: React.FC<SearchBarProps> = ({ pokemons, onUpdatePokemons
           <option value="maxHP">Hit Points</option>
           <option value="maxCP">Combat Points</option>
         </select>
+      </Filter>
+      <Filter>
         <FilterLabel htmlFor="order">Order</FilterLabel>
         <select id="order" value={order} onChange={e => setOrder(parseInt(e.currentTarget.value, 10))}>
           <option value={1}>Ascending</option>
