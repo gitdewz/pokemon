@@ -12,7 +12,7 @@ const Popup = styled.section<PopupImage>`
   bottom: 25%;
   width: 500px;
   left: 50%;
-  margin-left: -150px;
+  margin-left: -250px;
   background: white;
   border: 1px solid black;
   border-radius: 10px;
@@ -37,6 +37,11 @@ const Popup = styled.section<PopupImage>`
     -moz-background-size: cover;
     -webkit-background-size: cover;
     background-size: cover;
+  }
+
+  @media (max-width: 600px) {
+    width: 300px;
+    margin-left: -150px;
   }
 `;
 

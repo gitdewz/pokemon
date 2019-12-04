@@ -16,7 +16,7 @@ const Header = styled.header`
 const Logo = styled.div`
   position: absolute;
   height: 70px;
-  left: 25px;
+  left: 15px;
   display: flex;
   align-items: center;
 `;
@@ -62,7 +62,7 @@ const MobileFilterToggle = styled.img`
   display: none;
   position: absolute;
   top: 10px;
-  right: 10px;
+  right: 25px;
   height: 50px;
   width: 50px;
   pointer: cursor;
@@ -146,7 +146,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({ pokemons, onUpdatePokemons
       <Filter>
         <FilterLabel htmlFor="pokemon_name">Name</FilterLabel>
         <input type="text" id="pokemon_name" value={name} onChange={e => setName(e.currentTarget.value)} />
-        <button onClick={handleSearch}>Search</button>
+        {mobileFilter.display === 'none' && <button onClick={handleSearch}>Search</button>}
       </Filter>
       <Filter>
         <FilterLabel htmlFor="sort_by">Sort By</FilterLabel>
@@ -161,7 +161,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({ pokemons, onUpdatePokemons
           <option value={1}>Ascending</option>
           <option value={-1}>Descending</option>
         </select>
-        <button onClick={() => handleSort(currPokemons)}>Sort</button>
+        {mobileFilter.display === 'none' && <button onClick={() => handleSort(currPokemons)}>Sort</button>}
       </Filter>
     </React.Fragment>
   );
