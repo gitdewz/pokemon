@@ -1,110 +1,9 @@
 import * as React from 'react';
-import styled from 'styled-components';
 import { Pokemon } from '../PokemonContainer';
-
-const Header = styled.header`
-  position: fixed;
-  top: 0;
-  width: 100vw;
-  background-color: #ffde00;
-  height: 70px;
-  left: 0;
-  display: flex;
-  align-items: center;
-`;
-
-const Logo = styled.div`
-  position: absolute;
-  height: 70px;
-  left: 15px;
-  display: flex;
-  align-items: center;
-`;
-
-const LogoImage = styled.img`
-  height: 60px;
-  width: 60px;
-`;
-
-const LogoText = styled.span`
-  font-family: 'Proza sans-serif';
-  font-weight: bold;
-  font-size: 40px;
-  padding: 0 5px;
-
-  @media (max-width: 600px) {
-    display: none;
-  }
-`;
-
-const FilterContainer = styled.div`
-  display: flex;
-  position: absolute;
-  right: 25px;
-
-  @media (max-width: 1500px) {
-    display: none;
-  }
-`;
-
-const Filter = styled.div`
-  margin-left: 15px;
-  display: flex;
-
-  @media (max-width: 1500px) {
-    display: grid;
-    grid-template-columns: minmax(80px, 120px) minmax(100px, 300px);
-    grid-gap: 10px;
-    margin: 5px;
-  }
-`;
-
-const FilterLabel = styled.label`
-  font-weight: bold;
-  font-size: 20px;
-  padding: 5px;
-`;
-
-const MobileFilterToggle = styled.img`
-  display: none;
-  position: absolute;
-  top: 10px;
-  right: 25px;
-  height: 50px;
-  width: 50px;
-  cursor: pointer;
-
-  @media (max-width: 1500px) {
-    display: block;
-  }
-`;
-
-interface MobileFilter {
-  display: string;
-  left: string;
-}
-
-const MobileFilterContainer = styled.div<MobileFilter>`
-  display: block;
-  transition: left 1s;
-  left: ${({ left }) => left};
-  position: absolute;
-  top: 70px;
-  width: 100%;
-  height: calc(100vh - 70px);
-  background-color: rgba(230, 235, 251, .96);
-`;
-
-const MobileButtonContainer = styled.div`
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-`;
-
-const MobileButton = styled.button`
-  width: 100%;
-  height: 40px;
-`;
+import {
+  Header, Logo, LogoImage, LogoText, FilterContainer, Filter, FilterLabel, MobileFilter,
+  MobileFilterToggle, MobileFilterContainer, MobileButtonContainer, MobileButton
+} from './';
 
 interface SearchBarProps {
   pokemons: Pokemon[];
@@ -208,7 +107,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({ pokemons, onUpdatePokemons
     <Header>
       <Logo>
         <LogoImage src="https://icon-library.net/images/pokemon-pokeball-icon/pokemon-pokeball-icon-6.jpg" />
-        <LogoText>Ketchum's Collection</LogoText>
+        <LogoText><span>Ketchum's&nbsp;</span><span>Collection</span></LogoText>
       </Logo>
       <FilterContainer>
         {Filters}
