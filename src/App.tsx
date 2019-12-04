@@ -52,7 +52,7 @@ const GET_POKEMON = gql`
 `;
 
 const App = () => {
-  const [pokemons, setPokemons] = React.useState<Pokemon[]>([]);
+  const [pokemons, setPokemons] = React.useState<Pokemon[]>(null);
   const { loading, error, data } = useQuery(GET_POKEMON, { variables: { first: 151 } });
 
   React.useEffect(() => {
@@ -61,7 +61,7 @@ const App = () => {
     }
   }, [data]);
 
-  if (loading || pokemons.length === 0) {
+  if (loading || pokemons === null) {
     return <CircleLoader />;
   }
 

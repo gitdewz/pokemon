@@ -50,12 +50,42 @@ const Container = styled.main`
   margin-top: 75px;
 `;
 
+const NotFoundContainer = styled.main`
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+const NotFoundHeading = styled.h2`
+  font-size: 40px;
+  margin: 10px 0;
+  font-weight: bold;
+`;
+
+const NotFoundMessage = styled.span`
+  font-size: 25px;
+`;
+
 interface PokemonContainerProps {
   pokemons: Pokemon[];
 }
 
 export const PokemonContainer: React.FC<PokemonContainerProps> = ({ pokemons }) => {
   const [activePokemon, setActivePokemon] = React.useState<Pokemon>(null);
+
+  if (pokemons.length === 0) {
+    return (
+      <NotFoundContainer>
+        <NotFoundHeading>No Pokemon were located from that search.</NotFoundHeading>
+        <NotFoundMessage>
+          There are plenty of Pokemon out there, please search again or use the reset button to view all Pokemon.
+        </NotFoundMessage>
+      </NotFoundContainer>
+    );
+  }
 
   return (
     <Container>

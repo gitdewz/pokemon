@@ -62,7 +62,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({ pokemons, onUpdatePokemons
   const [currPokemons, setCurrPokemons] = React.useState<Pokemon[]>(Array.from(pokemons));
 
   const handleSearch = () => {
-    const filteredPokemons = pokemons.filter(pokemon => pokemon.name.indexOf(name) !== -1);
+    const filteredPokemons = pokemons.filter(pokemon => pokemon.name.toLowerCase().indexOf(name.toLowerCase()) !== -1);
     setCurrPokemons(filteredPokemons);
     onUpdatePokemons(filteredPokemons);
   };
