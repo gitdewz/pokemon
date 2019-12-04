@@ -23,7 +23,8 @@
   },
   "include": [
     "src/**/*.ts",
-    "typings/*.d.ts"
+    "typings/*.d.ts",
+    "src/SearchBar/index.tsx"
   ],
   "exclude": [
     "node_modules",

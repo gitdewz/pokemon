@@ -1,4 +1,4 @@
-export * from "./SearchBar";
+export * from './SearchBar';
 
 import styled from 'styled-components';
 
@@ -94,7 +94,7 @@ export const MobileFilterContainer = styled.div<MobileFilter>`
   top: 70px;
   width: 100%;
   height: calc(100vh - 70px);
-  background-color: rgba(230, 235, 251, .96);
+  background-color: rgba(230, 235, 251, 0.96);
 `;
 
 export const MobileButtonContainer = styled.div`
@@ -106,4 +106,5 @@ export const MobileButtonContainer = styled.div`
 export const MobileButton = styled.button`
   width: 100%;
   height: 40px;
+  cursor: pointer;
 `;
