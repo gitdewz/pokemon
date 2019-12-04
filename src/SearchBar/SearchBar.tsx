@@ -72,7 +72,7 @@ const MobileFilterToggle = styled.img`
   right: 25px;
   height: 50px;
   width: 50px;
-  pointer: cursor;
+  cursor: pointer;
 
   @media (max-width: 1500px) {
     display: block;

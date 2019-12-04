@@ -36,6 +36,11 @@ const Card = styled.div<Gradient>`
   padding: 10px;
   border-radius: 5px;
   background: ${({ gradient }) => gradient};
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 3px 3px .4px black;
+  }
 `;
 
 const NameText = styled.span`
