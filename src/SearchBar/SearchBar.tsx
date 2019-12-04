@@ -30,7 +30,6 @@ export const SearchBar: React.FC<SearchBarProps> = ({ pokemons, onUpdatePokemons
 
   const handleSearch = (): Promise<Pokemon[]> => {
     let filteredPokemons = pokemons.filter(pokemon => pokemon.name.toLowerCase().indexOf(name.toLowerCase()) !== -1);
-    console.log(filteredPokemons);
     if (type) {
       filteredPokemons = filteredPokemons.filter(pokemon => pokemon.types.find(t => t === type));
     }
