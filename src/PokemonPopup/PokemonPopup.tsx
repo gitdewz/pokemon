@@ -72,6 +72,7 @@ const CloseImage = styled.img`
   right: 10px;
   height: 25px;
   width: 25px;
+  cursor: pointer;
 `;
 
 const CloseButton = styled.button`
@@ -89,7 +90,7 @@ interface PokemonPopupProps {
 export const PokemonPopup: React.FC<PokemonPopupProps> = ({ pokemon, onClose }) => (
   <Popup image={pokemon.image}>
     <Heading>{pokemon.name} Stat Sheet</Heading>
-    <StatContainer>
+    <StatContainer key="pokemonstats">
       <Stat key="hp">Hit Points: {pokemon.maxHP}</Stat>
       <Stat key="cp">Compat Power: {pokemon.maxCP}</Stat>
       <Stat key="weight">
@@ -108,19 +109,19 @@ export const PokemonPopup: React.FC<PokemonPopupProps> = ({ pokemon, onClose }) 
       <Stat key="resistance">Resistance(s): {pokemon.resistant.map(resist => resist).join(', ')}</Stat>
       <Stat key="weakness">Weakness(es): {pokemon.weaknesses.map(weakness => weakness).join(', ')}</Stat>
     </StatContainer>
-    <div>
+    <div key="fastattacks">
       <AttackHeader>Fast Attack(s)</AttackHeader>
       <StatContainer>
         {pokemon.attacks.fast.map(attack => (
-          <PokemonAttack attack={attack} background="lightgray" />
+          <PokemonAttack key={attack.name} attack={attack} background="lightgray" />
         ))}
       </StatContainer>
     </div>
-    <div>
+    <div key="specialattacks">
       <AttackHeader>Special Attack(s)</AttackHeader>
       <StatContainer>
         {pokemon.attacks.special.map(attack => (
-          <PokemonAttack attack={attack} background="lightgray" />
+          <PokemonAttack key={attack.name} attack={attack} background="lightgray" />
         ))}
       </StatContainer>
     </div>
