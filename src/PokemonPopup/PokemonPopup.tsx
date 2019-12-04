@@ -40,8 +40,9 @@ const Popup = styled.section<PopupImage>`
   }
 
   @media (max-width: 600px) {
-    width: 300px;
-    margin-left: -150px;
+    width: 98%;
+    margin-left: 0;
+    left: 1%;
   }
 `;
 
