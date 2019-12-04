@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { PokemonAttack } from '../PokemonAttack';
 import { Pokemon } from '../PokemonContainer';
-import { Popup, PopupHeader, StatContainer, Stat, AttackHeader, CloseImage, CloseButton } from "./";
+import { AttackHeader, CloseButton, CloseImage, Popup, PopupHeader, Stat, StatContainer } from './';
 
 interface PokemonPopupProps {
   pokemon: Pokemon;

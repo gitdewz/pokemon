@@ -3,8 +3,16 @@ import { PokemonAttack } from '../PokemonAttack';
 import { Pokemon } from '../PokemonContainer';
 import { TypeImageMap } from '../PokemonType';
 import {
-  CardImageWrapper, TypeGradientMap, Card, NameText, PointDetails,
-  PointText, CardDetail, TypeImage, InfoIcon, PokemonImage
+  Card,
+  CardDetail,
+  CardImageWrapper,
+  InfoIcon,
+  NameText,
+  PointDetails,
+  PointText,
+  PokemonImage,
+  TypeGradientMap,
+  TypeImage
 } from './';
 
 interface PokemonCardProps {
@@ -34,10 +42,10 @@ export const PokemonCard: React.FC<PokemonCardProps> = ({ pokemon, onInfoClick }
         <PointDetails>
           <PointText key="pokemonhp" color="#ff4700" textBorderColor="black">
             {pokemon.maxHP} HP
-        </PointText>
+          </PointText>
           <PointText key="pokemoncp" color="#481b01" textBorderColor="#d7d7d7">
             {pokemon.maxCP} CP
-        </PointText>
+          </PointText>
         </PointDetails>
       </CardDetail>
       {pokemon.attacks.fast.map(attack => (
@@ -48,4 +56,4 @@ export const PokemonCard: React.FC<PokemonCardProps> = ({ pokemon, onInfoClick }
       ))}
     </Card>
   );
-}
+};

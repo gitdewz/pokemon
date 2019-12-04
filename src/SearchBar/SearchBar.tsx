@@ -1,8 +1,18 @@
 import * as React from 'react';
 import { Pokemon } from '../PokemonContainer';
 import {
-  Header, Logo, LogoImage, LogoText, FilterContainer, Filter, FilterLabel, MobileFilter,
-  MobileFilterToggle, MobileFilterContainer, MobileButtonContainer, MobileButton
+  Filter,
+  FilterContainer,
+  FilterLabel,
+  Header,
+  Logo,
+  LogoImage,
+  LogoText,
+  MobileButton,
+  MobileButtonContainer,
+  MobileFilter,
+  MobileFilterContainer,
+  MobileFilterToggle
 } from './';
 
 interface SearchBarProps {
@@ -107,7 +117,10 @@ export const SearchBar: React.FC<SearchBarProps> = ({ pokemons, onUpdatePokemons
     <Header>
       <Logo>
         <LogoImage src="https://icon-library.net/images/pokemon-pokeball-icon/pokemon-pokeball-icon-6.jpg" />
-        <LogoText><span>Ketchum's&nbsp;</span><span>Collection</span></LogoText>
+        <LogoText>
+          <span>Ketchum's&nbsp;</span>
+          <span>Collection</span>
+        </LogoText>
       </Logo>
       <FilterContainer>
         {Filters}

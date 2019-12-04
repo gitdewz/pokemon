@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { PokemonCard } from '../PokemonCard';
 import { PokemonPopup } from '../PokemonPopup';
-import { Pokemon, PokemonWrapper, NotFoundContainer, NotFoundHeading, NotFoundMessage } from "./";
+import { NotFoundContainer, NotFoundHeading, NotFoundMessage, Pokemon, PokemonWrapper } from './';
 
 interface PokemonContainerProps {
   pokemons: Pokemon[];
