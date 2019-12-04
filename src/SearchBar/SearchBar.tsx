@@ -42,7 +42,7 @@ const FilterContainer = styled.div`
   position: absolute;
   right: 25px;
 
-  @media (max-width: 1300px) {
+  @media (max-width: 1500px) {
     display: none;
   }
 `;
@@ -51,7 +51,7 @@ const Filter = styled.div`
   margin-left: 15px;
   display: flex;
 
-  @media (max-width: 1300px) {
+  @media (max-width: 1500px) {
     display: grid;
     grid-template-columns: minmax(80px, 120px) minmax(100px, 300px);
     grid-gap: 10px;
@@ -74,7 +74,7 @@ const MobileFilterToggle = styled.img`
   width: 50px;
   pointer: cursor;
 
-  @media (max-width: 1300px) {
+  @media (max-width: 1500px) {
     display: block;
   }
 `;
@@ -117,9 +117,14 @@ export const SearchBar: React.FC<SearchBarProps> = ({ pokemons, onUpdatePokemons
   const [order, setOrder] = React.useState<number>(1); // 1 for asc, -1 for desc
   const [currPokemons, setCurrPokemons] = React.useState<Pokemon[]>(Array.from(pokemons));
   const [mobileFilter, setMobileFilter] = React.useState<MobileFilter>({ display: 'none', left: '100%' });
+  const [type, setType] = React.useState<string>('');
 
   const handleSearch = (): Promise<Pokemon[]> => {
-    const filteredPokemons = pokemons.filter(pokemon => pokemon.name.toLowerCase().indexOf(name.toLowerCase()) !== -1);
+    let filteredPokemons = pokemons.filter(pokemon => pokemon.name.toLowerCase().indexOf(name.toLowerCase()) !== -1);
+    console.log(filteredPokemons);
+    if (type) {
+      filteredPokemons = filteredPokemons.filter(pokemon => pokemon.types.find(t => t === type));
+    }
     setCurrPokemons(filteredPokemons);
     onUpdatePokemons(filteredPokemons);
     return new Promise<Pokemon[]>(resolve => {
@@ -153,6 +158,30 @@ export const SearchBar: React.FC<SearchBarProps> = ({ pokemons, onUpdatePokemons
       <Filter>
         <FilterLabel htmlFor="pokemon_name">Name</FilterLabel>
         <input type="text" id="pokemon_name" value={name} onChange={e => setName(e.currentTarget.value)} />
+      </Filter>
+      <Filter>
+        <FilterLabel htmlFor="pokemon_type">Type</FilterLabel>
+        <select id="pokemon_type" onChange={e => setType(e.currentTarget.value)}>
+          <option value="">All</option>
+          <option value="Bug">Bug</option>
+          <option value="Dark">Dark</option>
+          <option value="Dragon">Dragon</option>
+          <option value="Electric">Electric</option>
+          <option value="Fairy">Fairy</option>
+          <option value="Fighting">Fighting</option>
+          <option value="Fire">Fire</option>
+          <option value="Flying">Flying</option>
+          <option value="Ghost">Ghost</option>
+          <option value="Grass">Grass</option>
+          <option value="Ground">Ground</option>
+          <option value="Ice">Ice</option>
+          <option value="Normal">Normal</option>
+          <option value="Poison">Poison</option>
+          <option value="Psychic">Psychic</option>
+          <option value="Rock">Rock</option>
+          <option value="Steel">Steel</option>
+          <option value="Water">Water</option>
+        </select>
         {mobileFilter.display === 'none' && <button onClick={handleSearch}>Search</button>}
       </Filter>
       <Filter>
@@ -162,6 +191,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({ pokemons, onUpdatePokemons
           <option value="name">Name</option>
           <option value="maxHP">Hit Points</option>
           <option value="maxCP">Combat Points</option>
+          <option value="classification">Classification</option>
         </select>
       </Filter>
       <Filter>
