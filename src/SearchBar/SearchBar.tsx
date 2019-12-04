@@ -92,7 +92,7 @@ const MobileFilterContainer = styled.div<MobileFilter>`
   top: 70px;
   width: 100%;
   height: calc(100vh - 70px);
-  background: lightgray;
+  background-color: rgba(230, 235, 251, .96);
 `;
 
 const MobileButtonContainer = styled.div`
@@ -146,7 +146,6 @@ export const SearchBar: React.FC<SearchBarProps> = ({ pokemons, onUpdatePokemons
 
   const handleApplyAll = () => {
     handleSearch().then(filteredPokemons => handleSort(filteredPokemons));
-    closeMobileMenu();
   };
 
   const closeMobileMenu = () => {
