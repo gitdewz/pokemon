@@ -78,6 +78,8 @@ export const CloseImage = styled.img`
 export const CloseButton = styled.button`
   margin-top: 20px;
   width: 100%;
+  left: 0;
   height: 50px;
   cursor: pointer;
+  position: absolute;
 `;
