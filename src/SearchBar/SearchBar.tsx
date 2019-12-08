@@ -5,8 +5,8 @@ import {
   FilterButton,
   FilterButtonContainer,
   FilterContainer,
+  FilterDisplay,
   FilterLabel,
-  FilterToggleContainer,
   FilterToggleImage,
   Header,
   Logo,
@@ -23,8 +23,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({ pokemons, onUpdatePokemons
   const [name, setName] = React.useState<string>('');
   const [sortBy, setSortBy] = React.useState<string>('id');
   const [order, setOrder] = React.useState<number>(1); // 1 for asc, -1 for desc
-  const [currPokemons, setCurrPokemons] = React.useState<Pokemon[]>(Array.from(pokemons));
-  const [mobileFilter, setMobileFilter] = React.useState<MobileFilter>({ display: 'none', left: '100%' });
+  const [mobileFilter, setMobileFilter] = React.useState<FilterDisplay>({ display: 'none', left: '100%' });
   const [type, setType] = React.useState<string>('');
 
   const handleSearch = (): Promise<Pokemon[]> => {
@@ -32,7 +31,6 @@ export const SearchBar: React.FC<SearchBarProps> = ({ pokemons, onUpdatePokemons
     if (type) {
       filteredPokemons = filteredPokemons.filter(pokemon => pokemon.types.find(t => t === type));
     }
-    setCurrPokemons(filteredPokemons);
     onUpdatePokemons(filteredPokemons);
     return new Promise<Pokemon[]>(resolve => {
       return resolve(filteredPokemons);
@@ -45,7 +43,6 @@ export const SearchBar: React.FC<SearchBarProps> = ({ pokemons, onUpdatePokemons
   };
 
   const resetPokemon = () => {
-    setCurrPokemons(pokemons);
     onUpdatePokemons(pokemons);
     setName('');
     setSortBy('id');
