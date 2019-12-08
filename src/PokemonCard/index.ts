@@ -27,30 +27,31 @@ interface Gradient {
   gradient: string;
 }
 
-export const Card = styled.div<Gradient>`
-    min-height: 150px;
-    border: 3px solid black;
-    box-sizing: border-box;
-    padding: 10px;
-    border-radius: 5px;
-    background: ${({ gradient }) => gradient};
-  
-    &:hover {
-      transform: translateY(-1px);
-      box-shadow: 3px 3px .4px black;
-    }
-  `;
+export const Card = styled.button<Gradient>`
+  min-height: 150px;
+  border: 3px solid black;
+  box-sizing: border-box;
+  padding: 10px;
+  border-radius: 5px;
+  background: ${({ gradient }) => gradient};
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 3px 3px .4px black;
+  }
+`;
 
 export const NameText = styled.span`
-    font-size: 24px;
-    font-weight: bold;
-  `;
+  font-size: 24px;
+  font-weight: bold;
+`;
 
 export const PointDetails = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-  `;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+`;
 
 interface PointOptions {
   color?: string;
@@ -58,51 +59,51 @@ interface PointOptions {
 }
 
 export const PointText = styled.span<PointOptions>`
-    font-size: 18px;
-    font-weight: bold;
-    color: ${({ color }) => (color ? color : '#000')};
-    text-shadow: ${({ textBorderColor }) =>
+  font-size: 18px;
+  font-weight: bold;
+  color: ${({ color }) => (color ? color : '#000')};
+  text-shadow: ${({ textBorderColor }) =>
     `-1px 0 ${textBorderColor}, 0 1px ${textBorderColor}, 1px 0 ${textBorderColor}, 0 -1px ${textBorderColor}`};
-  `;
+`;
 
 export const CardDetail = styled.div`
-    padding: 5px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  `;
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
 
 export const CardImageWrapper = styled.div`
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    padding: 30px;
-    border: 3px solid black;
-    box-sizing: border-box;
-    position: relative;
-    background-color: #fff;
-  `;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  padding: 30px;
+  border: 3px solid black;
+  box-sizing: border-box;
+  position: relative;
+  background-color: #fff;
+`;
 
 export const TypeImage = styled.img`
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    opacity: 0.1;
-    top: 0;
-  `;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  opacity: 0.1;
+  top: 0;
+`;
 
 export const InfoIcon = styled.img`
-    position: absolute;
-    height: 25px;
-    width: 25p;
-    top: 5px;
-    right: 5px;
-    cursor: pointer;
-  `;
+  position: absolute;
+  height: 25px;
+  width: 25p;
+  top: 5px;
+  right: 5px;
+  cursor: pointer;
+`;
 
 export const PokemonImage = styled.img`
-    display: block;
-    max-width: 250px;
-    width: auto;
-    height: 150px;
-  `;
+  display: block;
+  max-width: 250px;
+  width: auto;
+  height: 150px;
+`;

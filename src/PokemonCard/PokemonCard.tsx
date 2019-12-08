@@ -26,13 +26,12 @@ export const PokemonCard: React.FC<PokemonCardProps> = ({ pokemon, onInfoClick }
   };
 
   return (
-    <Card gradient={TypeGradientMap[pokemon.types[0].toLowerCase()]} key={pokemon.id}>
+    <Card onClick={handleOpenInfo} gradient={TypeGradientMap[pokemon.types[0].toLowerCase()]} key={pokemon.id}>
       <CardImageWrapper>
         <TypeImage key="typeimage" src={TypeImageMap[pokemon.types[0].toLowerCase()]} />
         <InfoIcon
           key="infoimage"
           role="button"
-          onClick={handleOpenInfo}
           src="https://icon-library.net/images/information-icon-transparent/information-icon-transparent-26.jpg"
         />
         <PokemonImage key="pokemonimage" src={pokemon.image} />
