@@ -27,7 +27,7 @@ interface Gradient {
   gradient: string;
 }
 
-export const Card = styled.button<Gradient>`
+export const Card = styled.div<Gradient>`
   min-height: 150px;
   border: 3px solid black;
   box-sizing: border-box;
@@ -38,7 +38,7 @@ export const Card = styled.button<Gradient>`
 
   &:hover {
     transform: translateY(-1px);
-    box-shadow: 3px 3px .4px black;
+    box-shadow: 3px 3px 0.4px black;
   }
 `;
 
