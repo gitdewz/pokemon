@@ -2,17 +2,16 @@ import * as React from 'react';
 import { Pokemon } from '../PokemonContainer';
 import {
   Filter,
+  FilterButton,
+  FilterButtonContainer,
   FilterContainer,
   FilterLabel,
+  FilterToggleContainer,
+  FilterToggleImage,
   Header,
   Logo,
   LogoImage,
-  LogoText,
-  MobileButton,
-  MobileButtonContainer,
-  MobileFilter,
-  MobileFilterContainer,
-  MobileFilterToggle
+  LogoText
 } from './';
 
 interface SearchBarProps {
@@ -46,6 +45,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({ pokemons, onUpdatePokemons
   };
 
   const resetPokemon = () => {
+    setCurrPokemons(pokemons);
     onUpdatePokemons(pokemons);
     setName('');
     setSortBy('id');
@@ -89,7 +89,6 @@ export const SearchBar: React.FC<SearchBarProps> = ({ pokemons, onUpdatePokemons
           <option value="Steel">Steel</option>
           <option value="Water">Water</option>
         </select>
-        {mobileFilter.display === 'none' && <button onClick={handleSearch}>Search</button>}
       </Filter>
       <Filter>
         <FilterLabel htmlFor="sort_by">Sort By</FilterLabel>
@@ -107,7 +106,6 @@ export const SearchBar: React.FC<SearchBarProps> = ({ pokemons, onUpdatePokemons
           <option value={1}>Ascending</option>
           <option value={-1}>Descending</option>
         </select>
-        {mobileFilter.display === 'none' && <button onClick={() => handleSort(currPokemons)}>Sort</button>}
       </Filter>
     </React.Fragment>
   );
@@ -121,25 +119,21 @@ export const SearchBar: React.FC<SearchBarProps> = ({ pokemons, onUpdatePokemons
           <span>Collection</span>
         </LogoText>
       </Logo>
-      <FilterContainer>
-        {Filters}
-        <Filter>
-          <button onClick={resetPokemon}>Reset</button>
-        </Filter>
-      </FilterContainer>
-      <MobileFilterToggle
+      <FilterToggleImage
         role="button"
-        src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/1200px-Hamburger_icon.svg.png"
-        onClick={() => setMobileFilter({ display: 'flex', left: '0' })}
+        onClick={() =>
+          mobileFilter.display === 'flex' ? closeMobileMenu() : setMobileFilter({ display: 'flex', left: '0' })
+        }
+        src="https://cdn.iconscout.com/icon/premium/png-256-thumb/filter-1436415-1213588.png"
       />
-      <MobileFilterContainer {...mobileFilter}>
+      <FilterContainer {...mobileFilter}>
         {Filters}
-        <MobileButtonContainer>
-          <MobileButton onClick={handleApplyAll}>Apply All</MobileButton>
-          <MobileButton onClick={resetPokemon}>Reset</MobileButton>
-          <MobileButton onClick={closeMobileMenu}>Close Menu</MobileButton>
-        </MobileButtonContainer>
-      </MobileFilterContainer>
+        <FilterButtonContainer>
+          <FilterButton onClick={handleApplyAll}>Apply All</FilterButton>
+          <FilterButton onClick={resetPokemon}>Reset</FilterButton>
+          <FilterButton onClick={closeMobileMenu}>Close Menu</FilterButton>
+        </FilterButtonContainer>
+      </FilterContainer>
     </Header>
   );
 };

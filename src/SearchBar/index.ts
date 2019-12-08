@@ -39,26 +39,11 @@ export const LogoText = styled.div`
   }
 `;
 
-export const FilterContainer = styled.div`
-  display: flex;
-  position: absolute;
-  right: 25px;
-
-  @media (max-width: 1500px) {
-    display: none;
-  }
-`;
-
 export const Filter = styled.div`
-  margin-left: 15px;
-  display: flex;
-
-  @media (max-width: 1500px) {
-    display: grid;
-    grid-template-columns: minmax(80px, 120px) minmax(100px, 300px);
-    grid-gap: 10px;
-    margin: 5px;
-  }
+  display: grid;
+  grid-template-columns: minmax(80px, 120px) minmax(100px, 300px);
+  grid-gap: 10px;
+  margin: 5px;
 `;
 
 export const FilterLabel = styled.label`
@@ -67,26 +52,22 @@ export const FilterLabel = styled.label`
   padding: 5px;
 `;
 
-export const MobileFilterToggle = styled.img`
-  display: none;
+export const FilterToggleImage = styled.img`
+  display: block;
   position: absolute;
-  top: 10px;
   right: 25px;
+  top: 10px;
   height: 50px;
   width: 50px;
   cursor: pointer;
-
-  @media (max-width: 1500px) {
-    display: block;
-  }
 `;
 
-export interface MobileFilter {
+export interface FilterDisplay {
   display: string;
   left: string;
 }
 
-export const MobileFilterContainer = styled.div<MobileFilter>`
+export const FilterContainer = styled.div<FilterDisplay>`
   display: block;
   transition: left 1s;
   left: ${({ left }) => left};
@@ -97,13 +78,13 @@ export const MobileFilterContainer = styled.div<MobileFilter>`
   background-color: rgba(230, 235, 251, 0.96);
 `;
 
-export const MobileButtonContainer = styled.div`
+export const FilterButtonContainer = styled.div`
   width: 100%;
   position: absolute;
   bottom: 0;
 `;
 
-export const MobileButton = styled.button`
+export const FilterButton = styled.button`
   width: 100%;
   height: 40px;
   cursor: pointer;
